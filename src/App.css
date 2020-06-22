@@ -1,0 +1,28 @@
+body{
+    margin:0px;
+    padding:0px;
+    background: rgb(17, 16, 16);
+    font-family: 'PT Serif', serif;
+}
+.sidenavi{
+  height:800px;
+}
+
+div ul li .sideli{
+  font-family: 'PT Serif', serif;
+}
+
+.fixed{
+  position: fixed;
+}
+.padding{
+  padding-bottom: 40px
+}
+
+div ul li .sideli:hover{
+  background-color: blue
+}
+
+div ul .sideul{
+
+}
