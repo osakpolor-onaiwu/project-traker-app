@@ -8,20 +8,27 @@ body{
   height:800px;
 }
 
-div ul li .sideli{
+.sideli{
   font-family: 'PT Serif', serif;
+  margin: 5px 0px 0px 5px;
+  padding: 5px 2px 2px 5px;
+  transition: all 0.4s;
+}
+
+.sideli:hover{
+  box-shadow: -2px 2px 5px grey;
+  border-bottom: white dashed solid 1px
+}
+
+.padding{
+  margin-left: 5px;
 }
 
 .fixed{
   position: fixed;
 }
-.padding{
-  padding-bottom: 40px
-}
 
-div ul li .sideli:hover{
-  background-color: blue
-}
+
 
 div ul .sideul{
 

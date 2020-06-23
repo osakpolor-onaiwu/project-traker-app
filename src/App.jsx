@@ -3,10 +3,12 @@ import {BrowserRouter,Route,Switch} from 'react-router-dom'
 import './App.css';
 import Navbar from './layout/navbar'
 import Dashboard from '../src/welcomes/dashboard';
+import CarouselTutorial from './welcomes/WelcomeCarousel'
 import Login from '../src/auth/login'
 import SignUp from '../src/auth/signUp'
+import ChatAndChatNav from './welcomes/chatandchatNav'
 import CreateProject from './project/createProject';
-import Chat  from './welcomes/chat';
+import ProjectDetails from './project/projectDetails'
 
 function App() {
   return (
@@ -18,8 +20,9 @@ function App() {
        <Route  path='/login' component={Login}/>
        <Route  path='/signUp' component={SignUp}/>
        <Route path='/createProject' component={CreateProject}/>
-       <Route  path='/chat' component={Chat}/>
-       {/* <Route  path=':/project/project_id' component={}/> */}
+       <Route path='/WelcomeCarousel' component={CarouselTutorial}/>
+       <Route path='/chatandchatNav' component={ChatAndChatNav}/>
+       <Route  path='/project/projectDetails' component={ProjectDetails}/> 
      </Switch>
     </div>
    </BrowserRouter>

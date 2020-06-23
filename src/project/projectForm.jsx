@@ -23,18 +23,18 @@ class ProjectForm extends Component {
         enddate3:null,
         enddate4:null,
         enddate5:null,
-        
+
     }
     handleChange=(e)=>{
         this.setState({
           [e.target.id]:e.target.value
         })
       }
-    
+
       handleSubmit=(e)=>{
         e.preventDefault();
         console.log(this.state)
-    
+
       }
 
     handleTarget=(id,text,startid,endid)=>{
@@ -57,15 +57,15 @@ class ProjectForm extends Component {
     }
 
     componentDidMount(){
-        $('#Description').val('New Text');
+        $('#Description').val('');
         M.textareaAutoResize($('#Description'));
     }
 
     render() {
         return (
-           
+
             <div class="">
-                <form class="col l12" onSubmit={this.handleSubmit}> 
+                <form class="col l12" onSubmit={this.handleSubmit}>
                     <div class="row">
                             <div class="input-field col l8">
                                 <input id="ProjectTitle" type="text" class="white-text validate" onChange={this.handleChange}/>
@@ -79,7 +79,7 @@ class ProjectForm extends Component {
                                 <input type="date"  id='fullEndDate' class="validate white-text" onChange={this.handleChange}/>
                                 <label for="date">End date</label>
                             </div>
-                            
+
                     </div>
                     <div class="row">
                         <div class="input-field col l12">
@@ -95,7 +95,7 @@ class ProjectForm extends Component {
                     <button type="submit" className='btn blue darken-1'>Create Project</button>
                 </form>
             </div>
-      
+
         )
     }
 }

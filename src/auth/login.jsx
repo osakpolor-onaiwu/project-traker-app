@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import {NavLink} from 'react-router-dom'
 
 export class Login extends Component {
     state={
@@ -11,11 +12,11 @@ export class Login extends Component {
           [e.target.id]:e.target.value
         })
       }
-    
+
       handleSubmit=(e)=>{
         e.preventDefault();
         console.log(this.state)
-    
+
       }
 
     render() {
@@ -38,6 +39,10 @@ export class Login extends Component {
                         </div>
                     </div>
                     <button type="submit" className='btn blue darken-1'>Login</button>
+                    <div>
+                    <p className='white-text'>Don't have an account?</p>
+                    <NavLink className='btn blue darken-1' to='/signUp'>SignUp</NavLink>
+                    </div>
                     </form>
                 </div>
             </div>
@@ -46,11 +51,11 @@ export class Login extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    
+
 })
 
 const mapDispatchToProps=()=> {
-    
+
 }
 
 // export default connect(mapStateToProps, mapDispatchToProps)(Login)
