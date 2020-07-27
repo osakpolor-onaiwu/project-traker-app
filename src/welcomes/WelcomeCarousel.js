@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import M from 'materialize-css/dist/js/materialize'
 import {NavLink} from 'react-router-dom'
+import {Redirect} from 'react-router-dom'
+import {firestoreConnect} from 'react-redux-firebase'
+import {compose} from 'redux'
+import {connect} from 'react-redux'
 
 class CarouselTutorial extends Component {
   componentDidMount() {
@@ -14,13 +18,15 @@ class CarouselTutorial extends Component {
 }
 
   render() {
+    const {auth}=this.props
+    if (auth.uid) {return<Redirect to='/chatandchatNav'/>}
     return (
-      <div className='container section'>
+      <div className='container caroheight section'>
         <div class="carousel carousel-slider center white-text">
           <div class="carousel-fixed-item center">
           <span>
-            <NavLink to='/signUp' class="btn waves-effect blue white-text darken-text-2">SignUp</NavLink>
-            <NavLink to='/login' class="btn waves-effect blue white-text darken-text-2">Login</NavLink>
+            <NavLink to='/signUp' class="btn waves-effect caro blue white-text darken-text-2">SignUp</NavLink>
+            <NavLink to='/login' class="btn waves-effect caro blue white-text darken-text-2">Login</NavLink>
           </span>
           </div>
           <div class="carousel-item red white-text" href="#one!">
@@ -45,4 +51,9 @@ class CarouselTutorial extends Component {
   }
 }
 
-export default CarouselTutorial;
+const mapStateToProps=(state)=>{
+  return{
+    auth:state.firebase.auth
+  }
+}
+export default connect(mapStateToProps) (CarouselTutorial);

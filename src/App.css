@@ -4,6 +4,9 @@ body{
     background: rgb(17, 16, 16);
     font-family: 'PT Serif', serif;
 }
+
+
+/* sidenavs */
 .sidenavi{
   height:800px;
 }
@@ -28,8 +31,12 @@ body{
   position: fixed;
 }
 
+/* Welcome Carousel */
+.caro{
+  margin-left: 5px;
+  margin-right: 5px
+}
 
-
-div ul .sideul{
-
+.caroheight{
+  height: 95%
 }

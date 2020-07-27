@@ -1,16 +1,16 @@
 const initialState = {
-    projects: [
-        { id: 1, content: "play pes", title: "gaming" },
+    chat: [
+        { id: 1, content: "play pes"},
     ],
 };
 
-const projectReducer = (state = initialState, action) => {
+const chatReducer = (state = initialState, action) => {
     switch (action.type) {
-        case "CREATE_PROJECT":
-            console.log("Poject created", action.project);
+        case "CREATE_CHAT":
+            console.log("chat created", action.chat);
             return state;
-        case "CREATE_PROJECT_ERROR":
-            console.log("create project error",action.err);
+        case "CREATE_CHAT_ERROR":
+            console.log("create chat error",action.err);
             return state;
         default:
             return state
@@ -19,4 +19,4 @@ const projectReducer = (state = initialState, action) => {
     // but since there can be many type of  actions, we use switch statement and  return something for
     // eact case. so we are saying if the action type is CREATE_PROJECT, do this
 };
-export default projectReducer;
+export default chatReducer;

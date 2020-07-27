@@ -1,7 +1,11 @@
 import React from 'react'
 import SideNav from '../layout/sidenav'
 import ProjectForm from './projectForm'
-const CreateProject=()=>{
+import {Redirect} from 'react-router-dom'
+import {connect} from 'react-redux'
+
+const CreateProject=({auth})=>{
+  if (!auth.uid) {return<Redirect to='/login'/>}
     return(
     <div>
         <div className="row">
@@ -16,4 +20,12 @@ const CreateProject=()=>{
     )
 }
 
-export default CreateProject
+const mapStateToProps=(state)=>{
+  return{
+    auth:state.firebase.auth
+    // we then returned an object that assigns the particular project to project property
+    //so we have mapped the state project, to the prop project
+  }
+}
+
+export default connect(mapStateToProps)(CreateProject)

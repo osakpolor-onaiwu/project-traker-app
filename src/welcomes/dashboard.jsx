@@ -8,11 +8,9 @@ import CarouselTutorial from './WelcomeCarousel'
 import ChatAndChatNav from './chatandchatNav'
 
 class Dashboard extends React.Component{
-
     render(){
     return (
         <div>
-          
             <CarouselTutorial/>
         </div>
     )

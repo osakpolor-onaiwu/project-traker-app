@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {NavLink} from 'react-router-dom'
+import LoginAction from '../actions/loginAction'
 
 export class Login extends Component {
     state={
@@ -15,7 +16,8 @@ export class Login extends Component {
 
       handleSubmit=(e)=>{
         e.preventDefault();
-        console.log(this.state)
+        this.props.LoginAction(this.state)
+        this.props.history.push("/")
 
       }
 
@@ -50,13 +52,11 @@ export class Login extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
 
-})
-
-const mapDispatchToProps=()=> {
-
+const mapDispatchToProps=(dispatch)=> {
+  return{
+  LoginAction:(credentials)=>{dispatch(LoginAction(credentials))}
+}
 }
 
-// export default connect(mapStateToProps, mapDispatchToProps)(Login)
-export default Login
+export default connect(null, mapDispatchToProps)(Login)

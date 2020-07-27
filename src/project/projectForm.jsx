@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import M from 'materialize-css/dist/js/materialize'
 import $ from 'jquery'
+import ProjectAction from '../actions/projectAction'
+import {connect} from 'react-redux'
 
 class ProjectForm extends Component {
     state={
@@ -34,6 +36,7 @@ class ProjectForm extends Component {
       handleSubmit=(e)=>{
         e.preventDefault();
         console.log(this.state)
+        this.props.ProjectAction(this.state)
 
       }
 
@@ -100,4 +103,10 @@ class ProjectForm extends Component {
     }
 }
 
-export default ProjectForm
+const mapDispatchToProps =(dispatch)=> {
+  return{
+    ProjectAction:(project)=>{dispatch(ProjectAction(project))}
+  }
+ }
+
+export default connect(null,mapDispatchToProps) (ProjectForm)

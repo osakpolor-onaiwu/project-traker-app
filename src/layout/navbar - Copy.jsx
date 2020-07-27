@@ -1,8 +1,10 @@
 import React from 'react'
 import M from 'materialize-css/dist/js/materialize'
 import $ from 'jquery'
+import {NavLink} from 'react-router-dom'
 import SignInLink from '../links/signInLink'
 import SignOutLink from '../links/signOutLink'
+import {connect} from 'react-redux'
 
 class Navbar extends React.Component{
 
@@ -15,22 +17,22 @@ class Navbar extends React.Component{
     }
 
     render(){
+      const {auth,profile}=this.props
+      const links=auth.uid?<SignInLink profile={profile}/>:<SignOutLink/>
         return(
             <div className='navbar-fixed'>
                 <nav className='black'>
                     <div class="nav-wrapper container  ">
-                    <a href="#!" class="brand-logo">ProjectP</a>
+                    <a href="/" class="brand-logo">ProjectP</a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                     <ul class=" hide-on-med-and-down">
-                       <SignInLink/>
-                       <SignOutLink/>
+                    {links}
                     </ul>
                     </div>
                 </nav>
 
                 <ul class="sidenav" id="mobile-demo">
-                    {/* <SignInLinkMobile/>
-                    <SignOutLinkMobile/> */}
+                    {links}
                 </ul>
             </div>
 
@@ -38,4 +40,11 @@ class Navbar extends React.Component{
     }
 }
 
-export default Navbar
+const mapStateToProps=(state)=>{
+    console.log(state)
+    return{
+        auth: state.firebase.auth,
+        profile:state.firebase.profile
+    }
+}
+export default connect(mapStateToProps)(Navbar)
