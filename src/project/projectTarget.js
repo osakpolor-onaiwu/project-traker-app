@@ -2,16 +2,15 @@ import React, { Component } from 'react';
 import M from 'materialize-css/dist/js/materialize'
 import $ from 'jquery'
 import {Redirect} from 'react-router-dom'
-import ProjectAction from '../actions/projectAction'
+import TargetAction from '../actions/targetAction'
 import ProjectActionGet from '../actions/projectAction2'
 import {connect} from 'react-redux'
 
-class ProjectForm extends Component {
+class ProjectTarget extends Component {
     state={
-        ProjectTitle:'',
+        Target:'',
         Start:null,
         End:null,
-        Description:'',
     }
     handleChange=(e)=>{
         this.setState({
@@ -21,9 +20,10 @@ class ProjectForm extends Component {
 
       handleSubmit=(e)=>{
         e.preventDefault();
-        this.props.ProjectAction(this.state)
+        this.props.TargetAction(this.state,this.props.project_id)
         console.log(this.state)
-        const x=document.getElementById('create').innerHTML="Project Created, click on it's title on the right to view it and set targets"
+        console.log(this.props.project_id)
+        const x=document.getElementById('create').innerHTML="target Created"
 
 
       }
@@ -42,10 +42,12 @@ class ProjectForm extends Component {
             <div className="">
                 <form className="col l12" onSubmit={this.handleSubmit}>
                     <div className="row">
-                            <div className="input-field col l8">
-                                <input id="ProjectTitle" type="text" className="white-text validate" required={true} onChange={this.handleChange}/>
-                                <label for="ProjectTitle">Project Title</label>
+
+                            <div className="input-field col l12">
+                                <textarea id="Target" className="materialize-textarea white-text" onChange={this.handleChange} ></textarea>
+                                <label for="Description">Target</label>
                             </div>
+
                             <div className="input-field col l2">
                                 <input type="date"  id='Start' className="validate white-text active" required={true} onChange={this.handleChange} />
                                 <label for="date">Start date</label>
@@ -56,14 +58,9 @@ class ProjectForm extends Component {
                             </div>
 
                     </div>
-                    <div className="row">
-                        <div className="input-field col l12">
-                        <textarea id="Description" className="materialize-textarea white-text" onChange={this.handleChange} ></textarea>
-                        <label for="Description">Project Description</label>
-                        </div>
-                    </div>
+
                     <div><p id='create' className='white-text'></p></div>
-                    <button type="submit" className='btn blue darken-1'>Create Project</button>
+                    <button type="submit" className='btn blue darken-1'>Add target</button>
                 </form>
 
 
@@ -75,9 +72,9 @@ class ProjectForm extends Component {
 
 const mapDispatchToProps =(dispatch)=> {
   return{
-    ProjectAction:(project)=>{dispatch(ProjectAction(project))},
+    TargetAction:(target,project_id)=>{dispatch(TargetAction(target,project_id))},
     ProjectActionGet:()=>{dispatch(ProjectActionGet())}
   }
  }
 
-export default connect(null,mapDispatchToProps) (ProjectForm)
+export default connect(null,mapDispatchToProps) (ProjectTarget)

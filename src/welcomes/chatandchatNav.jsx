@@ -4,8 +4,7 @@ import Chat from '../welcomes/chat'
 import {Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
 
-const ChatAndChatNav=({auth,profile})=>{
-  if (!auth.uid) {return<Redirect to='/login'/>}
+const ChatAndChatNav=()=>{
   return(
     <div>
         <div className='row'>
@@ -21,10 +20,7 @@ const ChatAndChatNav=({auth,profile})=>{
 }
 
 const mapStateToProps=(state)=>{
-    console.log(state)
     return{
-        auth: state.firebase.auth,
-        profile:state.firebase.profile
     }
 }
 

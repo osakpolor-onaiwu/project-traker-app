@@ -17,22 +17,19 @@ class Navbar extends React.Component{
     }
 
     render(){
-      const {auth,profile}=this.props
-      const links=auth.uid?<SignInLink profile={profile}/>:<SignOutLink/>
         return(
-            <div className='navbar-fixed'>
+            <div className='navbar-fixed '>
                 <nav className='black'>
                     <div class="nav-wrapper container  ">
                     <a href="/" class="brand-logo">ProjectP</a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-                    <ul class=" hide-on-med-and-down">
-                    {links}
+                    <ul class=" hide-on-med-and-down right">
+                    <a href="/createProject">Create project</a>
                     </ul>
                     </div>
                 </nav>
 
                 <ul class="sidenav" id="mobile-demo">
-                    {links}
                 </ul>
             </div>
 
@@ -43,8 +40,7 @@ class Navbar extends React.Component{
 const mapStateToProps=(state)=>{
     console.log(state)
     return{
-        auth: state.firebase.auth,
-        profile:state.firebase.profile
+
     }
 }
 export default connect(mapStateToProps)(Navbar)

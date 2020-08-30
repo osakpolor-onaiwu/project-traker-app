@@ -1,7 +1,5 @@
 const initialState = {
-    projects: [
-        { id: 1, content: "play pes", title: "gaming" },
-    ],
+    projects:[]
 };
 
 const projectReducer = (state = initialState, action) => {
@@ -12,11 +10,18 @@ const projectReducer = (state = initialState, action) => {
         case "CREATE_PROJECT_ERROR":
             console.log("create project error",action.err);
             return state;
+
+        case "GET_PROJECT":
+            console.log("success",action.response)
+            return{
+                ...state,
+                projects:action.response
+            }
+        case "GET_PROJECT_ERROR":
+            console.log("error",action.err)
+
         default:
             return state
     }
-    // here we handle all project action types, so we could have used if statement,
-    // but since there can be many type of  actions, we use switch statement and  return something for
-    // eact case. so we are saying if the action type is CREATE_PROJECT, do this
 };
 export default projectReducer;
