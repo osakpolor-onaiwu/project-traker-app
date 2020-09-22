@@ -1,19 +1,21 @@
 import axios from 'axios'
-const TargetAction = (target,project_id) => {
+const TargetAction = (target) => {
    return (dispatch) => {
-       axios.post(`http://localhost:8000/api/target/${project_id}/`,target)
+       console.log(target)
+       axios.post(`http://localhost:8000/api/projectP/target/`,target)
       .then(()=>{
            dispatch({type: "CREATE_TARGET"});
-               axios.get(`http://localhost:8000/api/target/${project_id}/`)
-               .then((response)=>{
-                   dispatch({
-                       type:"GET_TARGET",
-                       response:response.data
-                   })
-               }).catch(err=>{
-                   dispatch({type:'GET_TARGET_ERROR',err})
-               })
-           }).catch((err)=>{
+
+           axios.get('http://localhost:8000/api/projectP/Gettarget/')
+            .then((response)=>{
+                dispatch({
+                    type:"GET_TARGET",
+                    response:response.data
+                })
+            }).catch(err=>{
+                dispatch({type:'GET_TARGET_ERROR',err})
+            })
+      }).catch((err)=>{
                dispatch({type: 'CREATE_TARGET_ERROR',err:err})
            })
 

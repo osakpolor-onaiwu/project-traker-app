@@ -1,10 +1,13 @@
  import axios from 'axios'
+ import TokenConfig from './tokenConfig'
+
  const ProjectAction = (project) => {
-    return (dispatch) => {
-        axios.post('http://localhost:8000/api/projects/',project)
+    return (dispatch,getState) => {
+         
+        axios.post('http://localhost:8000/api/projectP/projects/',project,TokenConfig(getState))
        .then(()=>{
             dispatch({type: "CREATE_PROJECT"});
-                axios.get('http://localhost:8000/api/projects/')
+                axios.get('http://localhost:8000/api/projectP/projects/',TokenConfig(getState))
                 .then((response)=>{
                     dispatch({
                         type:"GET_PROJECT",
@@ -17,8 +20,8 @@
                 dispatch({type: 'CREATE_PROJECT_ERROR',err:err})
             })
 
-        
-      
+
+
   }
 }
 

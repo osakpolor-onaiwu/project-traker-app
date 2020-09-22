@@ -1,7 +1,8 @@
 import axios from 'axios'
-const ProjectActionGet = (project) => {
-   return (dispatch) => {
-    axios.get('http://localhost:8000/api/projects/')
+import TokenConfig from './tokenConfig'
+const ProjectActionGet = () => {
+   return (dispatch,getState) => {
+    axios.get('http://localhost:8000/api/projectP/projects/',TokenConfig(getState))
     .then((response)=>{
         dispatch({
             type:"GET_PROJECT",

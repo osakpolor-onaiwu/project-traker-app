@@ -1,7 +1,7 @@
 import axios from 'axios'
-const TargetActionGet = (target,project_id) => {
+const TargetActionGet = (project_id) => {
    return (dispatch) => {
-    axios.get(`http://localhost:8000/api/target/${project_id}/`)
+    axios.get('http://localhost:8000/api/projectP/Gettarget/',project_id)
     .then((response)=>{
         dispatch({
             type:"GET_TARGET",

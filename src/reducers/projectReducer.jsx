@@ -20,6 +20,14 @@ const projectReducer = (state = initialState, action) => {
         case "GET_PROJECT_ERROR":
             console.log("error",action.err)
 
+        case "DELETE_PROJECT":
+            return{
+                ...state,
+                projects:state.projects.filter(pro=>{
+                    return pro.id!==action.res
+                })
+            }
+
         default:
             return state
     }

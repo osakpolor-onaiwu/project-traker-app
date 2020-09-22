@@ -1,7 +1,5 @@
 const initialState = {
-    chat: [
-        { id: 1, content: "play pes"},
-    ],
+    chat:[]
 };
 
 const chatReducer = (state = initialState, action) => {
@@ -12,6 +10,16 @@ const chatReducer = (state = initialState, action) => {
         case "CREATE_CHAT_ERROR":
             console.log("create chat error",action.err);
             return state;
+        case "GET_CHAT":
+            console.log("get chat success",action.chat);
+            return {
+                ...state,
+                chat:action.chat
+            }
+        case "GETCHAT_ERROR":
+            console.log("get chat error",action.err);
+            return state;
+
         default:
             return state
     }

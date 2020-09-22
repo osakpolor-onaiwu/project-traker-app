@@ -23,8 +23,8 @@ class ProjectForm extends Component {
         e.preventDefault();
         this.props.ProjectAction(this.state)
         console.log(this.state)
-        const x=document.getElementById('create').innerHTML="Project Created, click on it's title on the right to view it and set targets"
-
+        const x=document.getElementById('large').innerHTML="Project Created, click on it's title on the left to view it and set targets"
+        const b=document.getElementById('small').innerHTML="Project Created, click it's title below to view it and set targets"
 
       }
 
@@ -40,33 +40,36 @@ class ProjectForm extends Component {
         return (
 
             <div className="">
-                <form className="col l12" onSubmit={this.handleSubmit}>
+                <form  style={{marginTop:'30x'}} className="col l12" onSubmit={this.handleSubmit}>
                     <div className="row">
-                            <div className="input-field col l8">
-                                <input id="ProjectTitle" type="text" className="white-text validate" required={true} onChange={this.handleChange}/>
-                                <label for="ProjectTitle">Project Title</label>
+                            <div className="input-field col xl8 s12 m12 l8">
+                                <input id="ProjectTitle" maxLength='50' type="text" className="black-text validate" required={true} onChange={this.handleChange}/>
+                                <label htmlFor="ProjectTitle" className='black-text'>Project Title</label>
+                                <span class="helper-text" data-error="50 character maximum" data-success='ok'>50 character maximum</span>
+
                             </div>
-                            <div className="input-field col l2">
-                                <input type="date"  id='Start' className="validate white-text active" required={true} onChange={this.handleChange} />
-                                <label for="date">Start date</label>
+                            <div className="input-field col m4 s6 xl2 l2">
+                                <input type="date"  id='Start' className="validate black-text active" required={true} onChange={this.handleChange} />
+                                <label htmlFor="date"  className='black-text active'>Start date</label>
                             </div>
-                            <div className="input-field col l2">
-                                <input type="date"  id='End' className="validate white-text active" required={true} onChange={this.handleChange}/>
-                                <label for="date">End date</label>
+                            <div className="input-field col m4 s6 xl2 l2">
+                                <input type="date"  id='End' className="validate black-text active" required={true} onChange={this.handleChange}/>
+                                <label htmlFor="date" className='black-text active'>End date</label>
                             </div>
 
                     </div>
                     <div className="row">
-                        <div className="input-field col l12">
-                        <textarea id="Description" className="materialize-textarea white-text" onChange={this.handleChange} ></textarea>
-                        <label for="Description">Project Description</label>
+                        <div className="input-field col m12 s12 xl12 l12">
+                        <textarea id="Description" className="materialize-textarea black-text" onChange={this.handleChange} ></textarea>
+                        <label htmlFor="Description" className='black-text'>Project Description</label>
                         </div>
                     </div>
-                    <div><p id='create' className='white-text'></p></div>
+                    <p id='large' className='black-text hide-on-med-and-down'></p>
+                    <p id='small' className='black-text hide-on-large-only'></p>
                     <button type="submit" className='btn blue darken-1'>Create Project</button>
+                    <br/>
+                    
                 </form>
-
-
             </div>
 
         )

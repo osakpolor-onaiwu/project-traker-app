@@ -11,9 +11,24 @@ const TargetReducer = (state = initialState, action) => {
             console.log("create target error",action.err);
             return state;
         case "GET_TARGET":
+            console.log(action.target)
             return{
                 ...state,
                 target:action.response
+            }
+        case 'GET_TARGET_ERROR':
+            console.log(action.err)
+            return{
+                ...state
+            }
+
+        case 'DELETE_TARGET':
+            console.log(action.res)
+            return{
+                ...state,
+                target:state.target.filter((tar)=>{
+                    return tar.id!==action.res
+                })
             }
         default:
             return state
