@@ -62,7 +62,7 @@ class ProjectTarget extends Component {
                     </div>
 
                     <div><p id='create' className='black-text'></p></div>
-                    <button style={{marginBottom:15}} type="submit" className='btn blue darken-1'>Add target</button>
+                    <button style={{marginBottom:15}} type="submit" className='btn blue darken-4'>Add target</button>
                 </form>
 
 

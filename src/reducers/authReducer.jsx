@@ -3,14 +3,15 @@ const initialState = {
     isAuthenticated:null,
     isLoading:false,
     user:[],
-    authError:null
+    authError:[]
 };
 
 const authReducer = (state = initialState, action) => {
     switch(action.type){
         //from login action 
         case 'LOGIN_ERROR':{
-            console.log(action.err)
+            localStorage.removeItem('token');
+            console.log(state)
             return{
                 ...state,
                 isAuthenticated:false,
@@ -51,10 +52,10 @@ const authReducer = (state = initialState, action) => {
             console.log(action.err.message)
             return{
                 ...state,
-                authError:action.err,
+                authError:null,
                 token:null,
                 user:null,
-                isAuthenticated:null,
+                isAuthenticated:false,
                 isLoading:false
             }
 
@@ -66,8 +67,9 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 token:null,
                 user:null,
-                isAuthenticated:null,
-                isLoading:false
+                isAuthenticated:false,
+                isLoading:false,
+                authError:null
             }
 
         //from signUP
@@ -86,7 +88,7 @@ const authReducer = (state = initialState, action) => {
             localStorage.removeItem('token');
             return{
                 ...state,
-                authError:action.err.message,
+                authError:action.err,
                 token:null,
                 user:null,
                 isAuthenticated:null,

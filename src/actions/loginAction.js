@@ -25,7 +25,7 @@ import axios from 'axios'
     .catch(err=>{
         dispatch({
             type:"LOGIN_ERROR",
-            err
+            err:err.response.data.non_field_errors
         })
     })
  };

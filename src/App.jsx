@@ -1,6 +1,7 @@
 import React from 'react';
 import {BrowserRouter,Route,Switch} from 'react-router-dom'
 import './App.css';
+import './ant.css'
 import Navbar from './layout/navbar'
 import Dashboard from '../src/welcomes/dashboard';
 import CarouselTutorial from './welcomes/WelcomeCarousel'
@@ -13,12 +14,13 @@ import loadUser from './actions/loadUserAction'
 import ChatActionGet from './actions/chatActionGet'
 import PrivateRoute from './welcomes/privatRoute'
 import {connect} from 'react-redux'
-import Footer  from './layout/footer'
+import Projects from './project/projects'
 
 
 class App extends React.Component{
   componentDidMount(){
     this.props.loadUser()
+    this.props.ChatActionGet()
   }
   render(){
   return (
@@ -32,6 +34,7 @@ class App extends React.Component{
        <PrivateRoute exact path='/createChat' component={ChatAndChatNav}/>
        <PrivateRoute exact path='/dashboard' component={Dashboard}/>
        <PrivateRoute path='/createProject' component={CreateProject}/>
+       <PrivateRoute path='/projects' component={Projects}/>
        <PrivateRoute  path='/project/:projectDetails' component={ProjectDetails}/> 
      </Switch>
     </div>

@@ -11,9 +11,8 @@ class DashboardSide extends React.Component{
         return(
         <div>
         <NavLink to={'/project/'+ project.id}  className='padding white-text'>
-        <li className='sideli' key={project.id}>
-        <i className="fa fa-folder-open"></i>
-        {project.ProjectTitle}
+        <li className='sideli truncate' key={project.id}>
+        <i className="fa fa-folder-open"></i> {project.ProjectTitle}
         </li>
         </NavLink>
         </div>
@@ -37,13 +36,13 @@ class DashboardSide extends React.Component{
         )
     })):(
         <div>
-        <p>No Chat</p>
+        <p>{auth.username}</p>
         </div>
     )
     return(
         <div className='sidenavi black'>
             
-            <ul className="  white-text sideul">
+            <ul className="truncate  white-text sideul">
             <h6 className='center white-text'>Projects</h6>
               {projectList}
               <li><div class="divider"></div></li>

@@ -1,0 +1,126 @@
+body{
+    font-family: 'Frank Ruhl Libre', serif;
+   margin:0px;
+   padding:0px
+}
+
+
+
+
+.container{
+ margin-right: auto;
+ margin-left: auto;
+}
+
+nav{
+ border-bottom: 1px white solid;
+}
+
+
+.card:hover{
+ box-shadow: 0px 0px 15px black;
+}
+
+.down{
+ position:relative
+}
+
+.down-in{
+ position: relative;
+ bottom: 0px;
+}
+
+
+/* sidenavs */
+.sidenavi{
+ height:800px;
+ 
+}
+
+.sideli{
+ margin: 5px 0px 0px 5px;
+ padding: 5px 2px 2px 5px;
+ transition: all 0.4s;
+}
+
+.sideli:hover{
+ box-shadow: -2px 2px 5px grey;
+ border-bottom: white dashed solid 1px
+}
+
+.padding{
+ margin-left: 5px;
+}
+
+.fixed{
+ position: fixed;
+}
+
+/* Welcome Carousel */
+.caro{
+ margin-left: 5px;
+ margin-right: 5px
+}
+
+.dashCaro{
+    position: relative;
+   }
+
+.caroheight{
+ height: 95%
+}
+
+.carousel-item{
+    position: relative;
+   }
+   
+.carousel-text{
+    position: absolute;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+}
+.carousel-text1{
+    position: absolute;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+}
+.carousel-text3{
+    position: absolute;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+}
+.carousel-text4{
+    position: absolute;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+}
+
+/* auths */
+
+
+
+
+.projects{
+ margin-top: 20px;
+}
+
+/* dashboards */
+
+.dashcard{
+width:200px;
+height: 200px;
+}
+
+
+/* project details */
+.bottom{
+ border-bottom: solid black 1px;
+}

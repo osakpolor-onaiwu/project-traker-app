@@ -13,7 +13,7 @@ const ChatAndChatNav=()=>{
             <div className='col fixed l2 xl2 m3 hide-on-small-only black-text black sidenavi'>
                 <ChatSideNav/>
             </div>
-            <div className='col right s12 m8 l10 xl10 '>
+            <div className='col right s12 m9 l10 xl10 '>
                 <Chat/>
                 <Footer/>
             </div>

@@ -22,7 +22,7 @@ const signUpAction = ({username,email,password}) =>{
          .catch(err=>{
              dispatch({
                  type:"SIGNUP_ERROR",
-                 err
+                 err:err.response.data
              })
          })
       };

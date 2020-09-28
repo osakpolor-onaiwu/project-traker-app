@@ -17,6 +17,7 @@ class Navbar extends React.Component{
 
     render(){
         const {isAuthenticated,user}=this.props.auth
+     
         const existingUser=(
             <ul class=" hide-on-med-and-down right">
                 <li>{user?`${user.username}`:" "}</li>

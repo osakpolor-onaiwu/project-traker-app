@@ -6,11 +6,30 @@ import ProjectTarget from './projectTarget'
 import TargetActionGet from '../actions/targetGet'
 import M from 'materialize-css/dist/js/materialize'
 import $ from 'jquery'
+import Footer from '../layout/footer'
 import moment from 'moment'
 import TargetDelete from '../actions/targetDelete';
 import ProjectDelete from '../actions/projectDelete';
+import { Collapse } from 'antd';
+
+const { Panel } = Collapse;
+
+function callback(key) {
+  console.log(key);
+}
+
 
 class ProjectDetails extends Component {
+  state={
+    counter:1
+  }
+
+  counterIncrement=()=>{
+    var x=this.state.counter ++
+    this.setState({
+      counter:x
+    })
+  }
   
   componentDidMount(){
 
@@ -30,7 +49,8 @@ class ProjectDetails extends Component {
             <td >{moment(target.Start).format("dddd,MMMM Do YYYY")}</td>
             <td >{moment(target.End).format("dddd,MMMM Do YYYY")}</td>
             <td>
-            <button className='btn blue darken-2 black-text' onClick={()=>this.props.TargetDelete(target.id)}>Delete</button>
+            <button className='btn waves-effect waves-light btn-small blue darken-4 black-text' 
+            onClick={()=>this.props.TargetDelete(target.id)}>Delete</button>
             </td>
           </tr>
       </tbody>
@@ -50,7 +70,7 @@ class ProjectDetails extends Component {
                   <th colspan="2" style={{width:'200px'}}>Project Title</th>
                   <th>Start Date</th>
                   <th>End Date</th>
-                  <th> <button className='btn blue darken-2' onClick={()=>{this.props.ProjectDelete(project.id)
+                  <th> <button className='btn waves-effect waves-light blue darken-4' onClick={()=>{this.props.ProjectDelete(project.id)
                   this.props.history.push('/createProject')}}
                 >delete</button></th>
               </tr>
@@ -86,21 +106,22 @@ class ProjectDetails extends Component {
     const projectPhone=project.length?(project.map(pro=>{
       return(
       <div className="col s12 m12" key={pro.id}>
-          <div className="card">
+          <div className="card teal darken-4">
             <div className="card-content">
               <p>
-              <h4 className='center black-text'>Project Title</h4>
+              <h5 className='center white-text'>Project Title</h5>
               <div class="divider"></div>
-              <h5 className='center black-text'>{pro.ProjectTitle}</h5>
+              <h6 className='center white-text'>{pro.ProjectTitle}</h6>
               </p>
+              <p style={{wordWrap:'break-word'}} className='white-text'><h5 className='center white-text'>Description</h5>
               <div class="divider"></div>
-              <p style={{wordWrap:'break-word'}}><h4 className='center black-text'>Description</h4>{pro.Description}</p>
+              {pro.Description}</p>
+              
             </div>
 
             <div className="card-action">
-            <div class="divider"></div>
-              <p>Start: {moment(pro.Start).format("dddd,MMMM Do YYYY")}</p>
-              <p>End: {moment(pro.End).format("dddd,MMMM Do YYYY")}</p>
+              <p className='white-text'>Start: {moment(pro.Start).format("ddd,MMM Do YYYY")}</p>
+              <p className='white-text'>End: {moment(pro.End).format("ddd,MMM Do YYYY")}</p>   
             </div>
           </div>
           <ProjectTarget project_id={pro.id}/>
@@ -108,25 +129,26 @@ class ProjectDetails extends Component {
       )
     })):(<div><p>no project</p></div>)
 
-    const targetPhone=target.length?(target.map(tar=>{
+    const targetCollapse=target.length?(target.map(tar=>{
       return(
-      <div className="col s12 m12" key={tar.id}>
-          <div className="card">
+        <Panel header='Targets' key={tar.id}>
+          <div className="card teal darken-4" >
             <div className="card-content">
-              <p><h4 className='center black-text bottom'>Target</h4>{tar.Target}</p>
+              <p className='white-text'><h5 className='center white-text'>Target</h5>
+              <div class="divider"></div>
+              {tar.Target}</p>
             </div>
 
             <div className="card-action">
-            <div class="divider"></div>
-              <p>Start: {moment(tar.Start).format("dddd,MMMM Do YYYY")}</p>
-              <p>End: {moment(tar.End).format("dddd,MMMM Do YYYY")}</p>
+              <p className='white-text'>Start: {moment(tar.Start).format("dddd,MMMM Do YYYY")}</p>
+              <p className='white-text'>End: {moment(tar.End).format("dddd,MMMM Do YYYY")}</p>
+              <button className='btn waves-effect waves-light btn-small blue darken-4 white-text' 
+              onClick={()=>this.props.TargetDelete(tar.id)}>Delete</button>
             </div>
           </div>
-      </div>
+        </Panel>
       )
     })):(<div><p>no target</p></div>)
-
-
 
 
     return (
@@ -157,10 +179,18 @@ class ProjectDetails extends Component {
             </thead>
             {eachTarget}
           </table>
+          <Footer/>
         </div>
 
         <div className='row hide-on-large-only'>
-          {targetPhone}
+          <div className='col s12 m12' onChange={this.counterIncrement}>
+            <Collapse defaultActiveKey={['1']} onChange={callback}>
+             {targetCollapse}
+           </Collapse>
+          </div>
+          <div className='col s12 m12'>
+          <Footer/>
+          </div>
         </div>
       </div>
     );

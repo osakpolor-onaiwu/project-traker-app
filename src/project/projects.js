@@ -2,8 +2,9 @@ import React from 'react'
 import {NavLink} from 'react-router-dom'
 import { connect } from "react-redux";
 import axios from 'axios';
+import Footer from '../layout/footer'
 
-class ProjectList extends React.Component{
+class Projects extends React.Component{
    
     render(){
     const {project}=this.props
@@ -11,7 +12,7 @@ class ProjectList extends React.Component{
         return(
         <div>
         <NavLink to={'/project/'+ project.id}  className='padding white-text'>
-        <li className='sideli truncate' key={project.id}>
+        <li className='' key={project.id}>
         <i className="fa fa-folder-open"></i>
         {project.ProjectTitle}
         </li>
@@ -25,12 +26,16 @@ class ProjectList extends React.Component{
         </div>
     )
     return(
-        <div className='sidenavi '>
-            <h6 className='center white-text'>Projects</h6>
-            <ul className="truncate black white-text sideul">
+      <div className='projects'>
+        <div  className='teal darken-4 row projects container'>
+            <div class="divider"></div>
+            <h3 className='center white-text'>Projects</h3>
+            <ul style={{padding:'10px'}} className=" teal darken-4 white-text sideul">
               {projectList}
             </ul>
         </div>
+        <Footer/>
+      </div>
     )
 }
 }
@@ -44,4 +49,4 @@ const mapStateToProps=(state,ownprops)=>{
 
 
 
-export default connect(mapStateToProps)(ProjectList)
+export default connect(mapStateToProps)(Projects)

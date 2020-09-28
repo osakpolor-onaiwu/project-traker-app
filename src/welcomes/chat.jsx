@@ -2,6 +2,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import ChatAction from '../actions/chatAction'
+import M from 'materialize-css/dist/js/materialize'
+import $ from 'jquery'
+import moment from 'moment'
 import ChatActionGet from '../actions/chatActionGet'
 import {Redirect,NavLink} from 'react-router-dom'
 import {compose} from 'redux'
@@ -23,6 +26,8 @@ import {compose} from 'redux'
     }
 
     componentDidMount(){
+        $('#message').val('');
+        M.textareaAutoResize($('#message'));
         this.props.ChatActionGet()
     }
 
@@ -32,15 +37,18 @@ import {compose} from 'redux'
             return(
                 <div className="row">
                     <div className="col  s8 m6 l6">
-                        <div  key={chat.owner} className="blue-grey darken-2 card">
-                            <div className="card-content black-text">
-                                <p>{chat.message}</p>
-                                <p style={{fontSize:'0.8em'}}>{chat.created_at}</p>
-                                <p>by {chat.owner}</p>
+                        <div  key={chat.owner} className="teal darken-4 card">
+                            <div className="card-content white-text">
+                                <p classname='white-text'>{chat.message}</p>
+                                
+                                <p classname='white-text' style={{fontSize:'0.65em', fontStyle:'italic'}}>
+                                    by {auth.username} on {moment(chat.created_at).format("ddd, MMM Do YYYY hA")}
+                                </p>
+                                
                             </div>
                             <div className="card-action">
-                                <a href="#" style={{marginRight:'5px'}}className="btn  blue darken-1">Delete</a>
-                                <a href="#" className="btn  blue darken-1">Comment</a>
+                                <a href="#" style={{marginRight:'10px',fontSize:'0.7em'}}className=" white-text">Delete</a>
+                                <a href="#" style={{fontSize:'0.7em'}} className="white-text">Comment</a>
                             </div>
                         </div>
                     </div>
@@ -56,10 +64,11 @@ import {compose} from 'redux'
             <div className="row">
                 <form class="col s12 m12 l12" onSubmit={this.handleSubmit}>
                     <div class="row">
-                        <div class="input-field col l12">
-                        <i class="material-icons prefix">account_circle</i>
-                        <input id="message" type="text" class="validate black-text" required={true} onChange={this.handleChange}/>
-                        <label htmlFor="message" className='black-text'>Write a Message</label>
+                        
+                        <div className="input-field col s12 m12 xl12 l12">
+                            <i class="material-icons prefix">account_circle</i>
+                            <textarea id="message" className="materialize-textarea black-text" onChange={this.handleChange} ></textarea>
+                            <label htmlFor="message" className='black-text'>type a message</label>
                         </div>
                         
                     </div>
