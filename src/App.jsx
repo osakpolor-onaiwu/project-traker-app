@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter,Route,Switch} from 'react-router-dom'
+import {HashRouter,Route,Switch} from 'react-router-dom'
 import './App.css';
 import './ant.css'
 import Navbar from './layout/navbar'
@@ -14,7 +14,12 @@ import loadUser from './actions/loadUserAction'
 import ChatActionGet from './actions/chatActionGet'
 import PrivateRoute from './welcomes/privatRoute'
 import {connect} from 'react-redux'
+import 'materialize-css/dist/css/materialize.min.css'
+import 'materialize-css/dist/js/materialize.min.js'
 import Projects from './project/projects'
+import   ProjectActionGet from './actions/projectAction2'
+import TargetActionGet from './actions/targetGet'
+
 
 
 class App extends React.Component{
@@ -24,7 +29,7 @@ class App extends React.Component{
   }
   render(){
   return (
-   <BrowserRouter>
+   <HashRouter>
    <div>
      <Navbar/>
      <Switch>
@@ -38,7 +43,7 @@ class App extends React.Component{
        <PrivateRoute  path='/project/:projectDetails' component={ProjectDetails}/> 
      </Switch>
     </div>
-   </BrowserRouter> 
+   </HashRouter> 
   )
 }
 }
@@ -46,7 +51,11 @@ class App extends React.Component{
 const mapDispatchToProps=(dispatch)=>{
 return{
   loadUser:()=>{dispatch(loadUser())},
-  ChatActionGet:()=>{dispatch(ChatActionGet())}
+  ChatActionGet:()=>{dispatch(ChatActionGet())},
+  ProjectActionGet:()=>{dispatch(ProjectActionGet())},
+  TargetActionGet: () => {
+    dispatch(TargetActionGet());
+},
 }
 }
 

@@ -35,11 +35,13 @@ class Navbar extends React.Component{
         )
         const existingUser2=(
             <ul class=" black white-text">
-                <li class="divider" tabindex="-1"></li>
+                <li class="divider" tabIndex="-1"></li>
                 <li><NavLink to="/createProject" className='white-text'>Create project</NavLink></li>
-                <li class="divider" tabindex="-1"></li>
+                <li class="divider" tabIndex="-1"></li>
                 <li><NavLink to="/createChat" className='white-text'>Chat</NavLink></li>
-                <li class="divider" tabindex="-1"></li>
+                <li class="divider" tabIndex="-1"></li>
+                <li><NavLink to="/projects" className='white-text'>View Projects</NavLink></li>
+                <li class="divider" tabIndex="-1"></li>
                 <li><NavLink to='#' className='white-text' onClick={this.props.Logout}>Logout</NavLink></li>
             </ul>
         );
@@ -47,7 +49,7 @@ class Navbar extends React.Component{
         const newUser2=(
             <ul class=" black white-text">
                 <li><Link to="/login" className='white-text'>Login</Link></li>
-                <li class="divider" tabindex="-1"></li>
+                <li class="divider" tabIndex="-1"></li>
                 <li><Link to="/signUp" className='white-text'>SignUp</Link></li>
             </ul>
         )
@@ -55,7 +57,7 @@ class Navbar extends React.Component{
 
 
         return(
-            <div className='navbar-fixed '>
+            <div className='navbar-fixed  '>
                 <nav className='black' >
                     <div class="nav-wrapper container">
                     

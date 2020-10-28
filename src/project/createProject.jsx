@@ -20,9 +20,9 @@ class CreateProject extends React.Component{
         const {project}=this.props
 
         return(
-            <div>
+            <div className=''>
                 <div class="row down  hide-on-large-only ">
-                    <div style={{}} id="create" class="col m12 s12 container">
+                    <div id="create" class="col m12 s12 container">
                          <ProjectForm/>
                     </div>
                     <div id="project" style={{marginTop:'10px'}} class="container col m12 s12">

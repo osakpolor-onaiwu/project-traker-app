@@ -60,7 +60,7 @@ import {compose} from 'redux'
             </div>
         )
         return (
-          <div className='container'>
+          <div className='container movedown'>
             <div className="row">
                 <form class="col s12 m12 l12" onSubmit={this.handleSubmit}>
                     <div class="row">
